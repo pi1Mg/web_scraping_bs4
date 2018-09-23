@@ -1,19 +1,22 @@
 from selenium import webdriver
 from time import sleep
+import time
+start_time = time.time()
 
 
-#  Make a webdriver object --> point to driver path
-driver = webdriver.Chrome('C:\est\chromedriver_win32\chromedriver.exe')
+web_driver_path = 'C:\est\chromedriver_win32\chromedriver.exe'
+driver = webdriver.Chrome(web_driver_path)
 
-#  Open instagram.com using get method
-driver.get('https://instagram.com')
-sleep(5)
+#  Open instagram
+driver.get(r'https://www.instagram.com')
+sleep(2)
+
+#  Click on login button
 login_button = driver.find_element_by_link_text('Log in')
 login_button.click()
 sleep(5)
 
+#
 
-
-#  Always close webdriver object
 driver.close()
-
+print("--- running %s seconds ---" % (time.time() - start_time))
