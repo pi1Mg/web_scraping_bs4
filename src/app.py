@@ -8,7 +8,8 @@ start_time = time.time()
 
 #  This class is for testing purposes only. It is wrong on many levels.
 class App:
-    def __init__(self, username=credentials.instagram_user_name, password=credentials.instagram_password,
+    def __init__(self, username=credentials.instagram_user_name,
+                 password=credentials.instagram_password,
                  target_username='fruskac', path='C:\est\photos'):
         self.username = username
         self.password = password
@@ -19,14 +20,20 @@ class App:
         self.driver.get(self.main_url)
         time.sleep(3)
         #  write log in fuction
-
+        self.log_in()
 
         time.sleep(3)
         self.driver.close()
+
+    def log_in(self):
+        log_in_path = '//p[@class="izU2O"]/a'
+        log_in_button = self.driver.find_element_by_xpath(log_in_path)
+        log_in_button.click()
+        # input('Stop for now')
 
 
 if __name__ == '__main__':
     app = App()
 
 #  Running time:
-print('Runnung time is: {}'.format(time.time()-start_time))
+print('Runnung time is: {} seconds'.format(round(time.time()-start_time)))
